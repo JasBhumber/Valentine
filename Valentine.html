@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ritika 💖 Will you be my valentine?</title>
+
+  <!-- Cute font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: float 6s infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(1); }
+      100% { transform: translateY(-10vh) scale(1.5); }
+    }
+
+    .card {
+      background: white;
+      padding: 35px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      animation: pop 1s ease;
+      z-index: 10;
+      width: 90%;
+      max-width: 350px;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      color: #ff4d6d;
+    }
+
+    #question {
+      margin: 15px 0;
+      font-size: 18px;
+    }
+
+    button {
+      padding: 12px 24px;
+      border-radius: 30px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    #noBtn {
+      background: #ccc;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating hearts -->
+<div class="hearts">
+  <span class="heart" style="left:10%">💖</span>
+  <span class="heart" style="left:30%">💕</span>
+  <span class="heart" style="left:50%">💘</span>
+  <span class="heart" style="left:70%">❤️</span>
+  <span class="heart" style="left:90%">💗</span>
+</div>
+
+<!-- Background music -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9c8bba7c67.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>Ritika 💕</h1>
+  <p id="question">Will you be my Valentine? 🥹💘</p>
+  <button id="yesBtn">YES 💖</button>
+  <button id="noBtn">NO 😒</button>
+</div>
+
+<script>
+  const noBtn = document.getElementById("noBtn");
+  const question = document.getElementById("question");
+
+  const messages = [
+    "Really?? 😳",
+    "Why you wanna say no? 🤨",
+    "Try again 😏",
+    "That’s not an option 😌",
+    "Come on baby 💖",
+    "You know you love me 😘",
+    "Stop playing 😭"
+  ];
+
+  function moveButton() {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+    question.innerText = messages[Math.floor(Math.random() * messages.length)];
+  }
+
+  noBtn.addEventListener("mouseover", moveButton);
+  noBtn.addEventListener("click", moveButton);
+
+  document.getElementById("yesBtn").onclick = () => {
+    document.body.innerHTML = `
+      <div style="
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        background:linear-gradient(135deg,#ff758c,#ff7eb3);
+        color:white;
+        font-family:Poppins;
+        text-align:center;
+      ">
+        <h1>You said YES 😍💖<br>I love you Ritika 💕</h1>
+      </div>
+    `;
+  };
+</script>
+
+</body>
+</html>
